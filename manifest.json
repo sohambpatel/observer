@@ -1,0 +1,50 @@
+{
+    "manifest_version": 3,
+    "name": "OBSERVER Object Recorder",
+    "description": "Capture User actions and Create object Repo",
+    "version": "1.5",
+    "action": {
+        "default_icon": {
+          "32": "/logo/logo.png"
+        },
+        "default_title": "OBSERVER",
+        "default_popup": "html/popup.html"
+      },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "storage",
+        "unlimitedStorage",
+        "webNavigation",
+        "contextMenus",
+        "downloads",
+        "debugger"
+      ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "/js/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "all_frames": true,
+            "js": [
+                "/js/events.js",
+                "/js/htmlutils.js",
+                "/js/stringutils.js",
+                "/js/webrecording.js",
+                "/js/mobileobjectrecording.js",
+                "/js/objectrepobuilder.js",
+                "/js/script.js",
+                "/js/events.js",
+                "/js/repositorybuilder.js"
+
+            ]
+        }
+    ]
+}
